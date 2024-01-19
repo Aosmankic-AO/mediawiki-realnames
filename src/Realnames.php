@@ -382,25 +382,25 @@ class Realnames {
 	 * @note  requires MediaWiki 1.7.0
 	 * @note  does nothing for Timeless skin
 	 */
-	public static function hookPersonalUrls( &$personal_urls, $title ) {
-		if ( $GLOBALS['wgRealnamesReplacements']['personnal'] === true ) {
-			self::debug( __METHOD__, 'searching personnal urls...' );
 
-			// replace the name of the logged in user
-			if ( isset( $personal_urls['userpage'] ) === true
-				&& isset( $personal_urls['userpage']['text'] ) === true ) {
-				// fake the match, we know it's there
-				$m = [
-					'all' => $personal_urls['userpage']['text'],
-					'username' => $personal_urls['userpage']['text'],
-					'realname' => $GLOBALS['wgUser']->getRealname(),
-					];
-				$personal_urls['userpage']['text'] = self::replace( $m );
-			}
-		}
+	public static function onSkinTemplateNavigation_Universal(SkinTemplate $skinTemplate, array &$links) {
+    		if ( $GLOBALS['wgRealnamesReplacements']['personnal'] === true ) {
+        		self::debug( __METHOD__, 'searching personal urls...' );
 
-		return true;
-	}
+       		 // Accessing the user's profile link in the navigation array
+        	if ( isset( $links['userpage'] ) && isset( $skinTemplate->getUser()->mName ) ) {
+            		$username = $skinTemplate->getUser()->mName;
+            		$realname = $skinTemplate->getUser()->getRealname();
+
+           	 // Perform the replacement here
+            	// Example: Replace username with real name in the userpage link
+            	$links['userpage']['text'] = $realname ? $realname : $username;
+        }
+    }
+
+    return true;
+}
+	
 
 	/**
 	 * scan and replace plain usernames of the form User:username into real names.
