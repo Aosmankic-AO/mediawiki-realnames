@@ -43,7 +43,7 @@
 	},
 	"Hooks": {
 		"BeforePageDisplay": "\\MediaWiki\\Extension\\Realnames\\Realnames::hookBeforePageDisplay",
-		"PersonalUrls": "\\MediaWiki\\Extension\\Realnames\\Realnames::hookPersonalUrls"
+		"SkinTemplateNavigation::Universal": "\\MediaWiki\\Extension\\Realnames\\Realnames::onSkinTemplateNavigationUniversal"
 	},
    "manifest_version": 1
 }
