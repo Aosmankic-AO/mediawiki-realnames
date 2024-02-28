@@ -398,7 +398,7 @@ class Realnames {
 	 *    we tend to just strip the User: and leave the username, but we only modify the
 	 *    first word so some weird style might screw it up (2011-09-17, ofb)
 	 */
-	protected static function lookForBare( $text, $pattern = false ) {
+	 static function lookForBare( $text, $pattern = false ) {
 		if ( empty( $pattern ) === true ) {
 			// considered doing [^<]+ here to catch names with spaces or underscores,
 			// which works for most titles but is not universal
