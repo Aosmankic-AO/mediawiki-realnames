@@ -368,20 +368,8 @@ class Realnames {
 		return true;
 	}
 
-	/**
-	 * >= 0.2, change all usernames to realnames in url bar.
-	 * change all usernames to realnames in skin top right links bar
-	 *
-	 * @param \array &$personal_urls the array of URLs set up so far
-	 * @param Title $title the Title object of the current article
-	 *
-	 * @return \bool true, continue hook processing
-	 *
-	 * @since 2011-09-22, 0.2
-	 * @see   hook documentation http://www.mediawiki.org/wiki/Manual:Hooks/PersonalUrls
-	 * @note  requires MediaWiki 1.7.0
-	 * @note  does nothing for Timeless skin
-	 */
+};
+
 
 	$wgHooks['SkinTemplateNavigation::Universal'][] = function ( $skinTemplate, &$links ) {
     if ( $GLOBALS['wgRealnamesReplacements']['personnal'] === true ) {
@@ -396,8 +384,6 @@ class Realnames {
             $links['userpage']['text'] = $realname ? $realname : $username;
         }
     }
-};
-	
 
 	/**
 	 * scan and replace plain usernames of the form User:username into real names.
