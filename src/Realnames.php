@@ -383,23 +383,20 @@ class Realnames {
 	 * @note  does nothing for Timeless skin
 	 */
 
-	public static function onSkinTemplateNavigationUniversal(SkinTemplate $skinTemplate, array &$links) {
-    		if ( $GLOBALS['wgRealnamesReplacements']['personnal'] === true ) {
-        		self::debug( __METHOD__, 'searching personal urls...' );
+	$wgHooks['SkinTemplateNavigation::Universal'][] = function ( $skinTemplate, &$links ) {
+    if ( $GLOBALS['wgRealnamesReplacements']['personnal'] === true ) {
+        self::debug( __METHOD__, 'searching personal urls...' );
 
-       		 // Accessing the user's profile link in the navigation array
-        	if ( isset( $links['userpage'] ) && isset( $skinTemplate->getUser()->mName ) ) {
-            		$username = $skinTemplate->getUser()->mName;
-            		$realname = $skinTemplate->getUser()->getRealname();
+        // Accessing the user's profile link in the navigation array
+        if ( isset( $links['userpage'] ) && isset( $skinTemplate->getUser()->mName ) ) {
+            $username = $skinTemplate->getUser()->mName;
+            $realname = $skinTemplate->getUser()->getRealname();
 
-           	 // Perform the replacement here
-            	// Example: Replace username with real name in the userpage link
-            	$links['userpage']['text'] = $realname ? $realname : $username;
+            // Perform the replacement here
+            $links['userpage']['text'] = $realname ? $realname : $username;
         }
     }
-
-    return true;
-}
+};
 	
 
 	/**
