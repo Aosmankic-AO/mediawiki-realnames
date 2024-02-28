@@ -383,7 +383,7 @@ class Realnames {
 	 * @note  does nothing for Timeless skin
 	 */
 
-	public static function onSkinTemplateNavigation_Universal(SkinTemplate $skinTemplate, array &$links) {
+	public static function onSkinTemplateNavigationUniversal(SkinTemplate $skinTemplate, array &$links) {
     		if ( $GLOBALS['wgRealnamesReplacements']['personnal'] === true ) {
         		self::debug( __METHOD__, 'searching personal urls...' );
 
