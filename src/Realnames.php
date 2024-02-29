@@ -370,7 +370,7 @@ class Realnames {
 
 };
 
-$wgHooks['SkinTemplateNavigation::Universal'][] = function ( $skinTemplate, &$links ) {
+	$wgHooks['SkinTemplateNavigation::Universal'][] = function ( $skinTemplate, &$links ) {
 		if ( $GLOBALS['wgRealnamesReplacements']['personnal'] === true ) {
 			self::debug( __METHOD__, 'searching personal urls...' );
 	
