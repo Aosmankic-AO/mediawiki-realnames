@@ -370,8 +370,7 @@ class Realnames {
 
 };
 
-
-	$wgHooks['SkinTemplateNavigation::Universal'][] = function ( $skinTemplate, &$links ) {
+$wgHooks['SkinTemplateNavigation::Universal'][] = function ( $skinTemplate, &$links ) {
 		if ( $GLOBALS['wgRealnamesReplacements']['personnal'] === true ) {
 			self::debug( __METHOD__, 'searching personal urls...' );
 	
@@ -384,8 +383,7 @@ class Realnames {
 				$links['userpage']['text'] = $realname ? $realname : $username;
 			}
 		}
-	}
-    };
+	};
 
 	/**
 	 * scan and replace plain usernames of the form User:username into real names.
